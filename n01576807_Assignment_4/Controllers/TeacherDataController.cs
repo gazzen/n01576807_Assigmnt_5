@@ -8,7 +8,7 @@ using System.Web.Http;
 using n01576807_Assignment_4.Models;
 using MySql.Data.MySqlClient;
 using System.Diagnostics;
-using System.Web.Http.Cors;
+///using System.Web.Http.Cors;
 using n01576807_Assignment_4.Models;
 using System.Data.SqlClient;
 
@@ -29,7 +29,7 @@ namespace n01576807_Assignment_4.Controllers
         /// <example>GET api/TeacherData/ListTeachers -> {Teacher Object, Teacher Object, Teacher Object...}</example>
         [HttpGet]
         [Route("api/TeacherData/ListTeachers/{SearchKey?}")]
-        public IEnumerable<Teacher> ListAuthors(string SearchKey = null)
+        public IEnumerable<Teacher> ListTeachers(string SearchKey = null)
         {
             //Create an instance of a connection
             MySqlConnection Conn = Blog.AccessDatabase();
@@ -56,7 +56,7 @@ namespace n01576807_Assignment_4.Controllers
             while (ResultSet.Read())
             {
                 //Access Column information by the DB column name as an index
-                int TeacherId = (int)ResultSet["authorid"];
+                int TeacherId = (int)ResultSet["teacherid"];
                 string TeacherFname = ResultSet["teacherfname"].ToString();
                 string TeacherLname = ResultSet["teacherlname"].ToString();
 
@@ -147,7 +147,7 @@ namespace n01576807_Assignment_4.Controllers
             MySqlCommand cmd = Conn.CreateCommand();
 
             //SQL QUERY
-            cmd.CommandText = "Delete from authors where authorid=@id";
+            cmd.CommandText = "Delete from teachers where teacherid=@id";
             cmd.Parameters.AddWithValue("@id", id);
             cmd.Prepare();
 
@@ -172,7 +172,7 @@ namespace n01576807_Assignment_4.Controllers
         /// }
         /// </example>
         [HttpPost]
-        [EnableCors(origins: "*", methods: "*", headers: "*")]
+        /// [EnableCors(origins: "*", methods: "*", headers: "*")]
         public void AddTeacher([FromBody] Teacher NewTeacher)
         {
             //Create an instance of a connection

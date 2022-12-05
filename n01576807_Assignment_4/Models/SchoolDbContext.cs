@@ -13,7 +13,7 @@ namespace n01576807_Assignment_4.Models
 
         private static string User { get { return "root"; } }
         private static string Password { get { return "root"; } }
-        private static string Database { get { return "blog"; } }
+        private static string Database { get { return "schooldb"; } }
         private static string Server { get { return "localhost"; } }
         private static string Port { get { return "3306"; } }
 
