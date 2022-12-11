@@ -1,0 +1,31 @@
+﻿
+@model n01576807_Assignment_4.Models.Teacher
+@{
+    ViewBag.Title = "Add";
+}
+
+
+<div id="containershow">
+    <nav>
+        <a class="navlink" href="/Teacher/Show/@Model.TeacherId">Back</a>
+    </nav>
+    <h2>Add Teacher</h2>
+    <form method="POST" action="/Teacher/Add/@Model.TeacherId">
+        <div class="inputrow">
+            <label for="TeacherFname">First Name:</label>
+            <input type="text" id="TeacherFname" name="TeacherFname" value="@Model.TeacherFname" />
+
+        </div>
+        <div class="inputrow">
+            <label for="TeacherLname">Last Name:</label>
+            <input type="text" id="TeacherLname" name="TeacherLname" value="@Model.TeacherLname" />
+
+        </div>
+
+        <div class="inputrow">
+            <input type="button" value="Add Teacher" />
+        </div>
+
+    </form>
+</div>
+
